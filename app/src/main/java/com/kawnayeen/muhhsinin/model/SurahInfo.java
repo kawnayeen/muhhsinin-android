@@ -1,14 +1,20 @@
 package com.kawnayeen.muhhsinin.model;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by kawnayeen on 3/24/17.
  */
 
 public class SurahInfo {
+    @SerializedName("number")
     private int surahNumber;
     private String name;
+    @SerializedName("englishName")
     private String transliteration;
+    @SerializedName("englishNameTranslation")
     private String translation;
+    @SerializedName("numberOfAyahs")
     private int numberOfAyat;
     private RevelationType revelationType;
 
