@@ -14,6 +14,8 @@ import org.mockito.junit.MockitoRule;
 import java.util.Arrays;
 import java.util.List;
 
+import io.reactivex.Single;
+
 import static org.mockito.Mockito.*;
 
 /**
@@ -41,14 +43,14 @@ public class AyatSelectionPresenterTest {
 
     @Test
     public void shouldPassSurahInfosToView() {
-        when(surahInfoRepository.getAllSurahInfo()).thenReturn(SURAH_INFOS);
+        when(surahInfoRepository.getAllSurahInfo()).thenReturn(Single.just(SURAH_INFOS));
         selectionPresenter.loadSurahInfos();
         verify(ayatSelectionView).displaySurahSelection(SURAH_INFOS);
     }
 
     @Test
     public void shouldHandleError() {
-        when(surahInfoRepository.getAllSurahInfo()).thenThrow(new RuntimeException("Error in API"));
+        when(surahInfoRepository.getAllSurahInfo()).thenReturn(Single.error(new RuntimeException("Error in API")));
         selectionPresenter.loadSurahInfos();
         verify(ayatSelectionView).displaySurahInfoError();
     }

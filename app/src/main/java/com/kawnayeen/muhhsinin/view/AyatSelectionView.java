@@ -10,5 +10,6 @@ import java.util.List;
 
 public interface AyatSelectionView {
     void displaySurahSelection(List<SurahInfo> surahInfos);
+
     void displaySurahInfoError();
 }

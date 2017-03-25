@@ -4,7 +4,7 @@ import com.kawnayeen.muhhsinin.model.SurahInfo;
 
 import java.util.List;
 
-import retrofit2.Call;
+import io.reactivex.Single;
 import retrofit2.http.GET;
 
 /**
@@ -13,5 +13,5 @@ import retrofit2.http.GET;
 
 public interface EndPoints {
     @GET("resources/surah.list.json")
-    Call<List<SurahInfo>> getSurahInfos();
+    Single<List<SurahInfo>> getSurahInfos();
 }
