@@ -24,7 +24,7 @@ public class AyatSelectionPresenter {
     }
 
     public void loadSurahInfos() {
-        surahInfoRepository.getAllSurahInfo().subscribeWith(new DisposableSingleObserver<List<SurahInfo>>() {
+        DisposableSingleObserver<List<SurahInfo>> singleObserver = surahInfoRepository.getAllSurahInfo().subscribeWith(new DisposableSingleObserver<List<SurahInfo>>() {
             @Override
             public void onSuccess(List<SurahInfo> surahInfos) {
                 ayatSelectionView.displaySurahSelection(surahInfos);
@@ -35,11 +35,11 @@ public class AyatSelectionPresenter {
                 ayatSelectionView.displaySurahInfoError();
             }
         });
-//        try {
-//            List<SurahInfo> surahInfos = surahInfoRepository.getAllSurahInfo();
-//            ayatSelectionView.displaySurahSelection(surahInfos);
-//        } catch (RuntimeException e) {
-//            ayatSelectionView.displaySurahInfoError();
-//        }
+
+        compositeDisposable.add(singleObserver);
+    }
+
+    public void cleanUp(){
+        compositeDisposable.clear();
     }
 }

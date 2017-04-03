@@ -1,8 +1,10 @@
-package com.kawnayeen.muhhsinin;
+package com.kawnayeen.muhhsinin.activity;
 
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+
+import com.kawnayeen.muhhsinin.activity.Splash;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,9 +20,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
  */
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class MuhhsininTest {
+public class SplashTest {
     @Rule
-    public ActivityTestRule<Muhhsinin> mActivityRule = new ActivityTestRule<Muhhsinin>(Muhhsinin.class);
+    public ActivityTestRule<Splash> mActivityRule = new ActivityTestRule<Splash>(Splash.class);
 
     @Test
     public void shouldHaveHelloWorld() {
